@@ -4,10 +4,11 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const routes = require('./routes')
 
 
 // Routes
-const routes = require('./routes');
+//const routes = require('./routes');
 
 // Set View Engine
 app.set('view engine', 'ejs');
@@ -45,12 +46,13 @@ app.use(session({
 // GET Root Route
 //  views/index.ejs
 app.get('/', (req, res) => {
-  res.render('index');
+    console.log('getting root routeindex.ejs')
+    res.render('index');
 });
 
 
 // Accounts Routes
-// app.use('/accounts', routes.accounts);
+app.use('/accounts', routes.accounts);
 // Profile Routes
 // app.use('/profile', routes.profile);
 
